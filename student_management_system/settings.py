@@ -69,11 +69,11 @@ WSGI_APPLICATION = 'student_management_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fgs',  # Replace with your MySQL database name
-        'USER': 'root',  # Replace with your MySQL user
-        'PASSWORD': '',  # Replace with your MySQL password
-        'HOST': 'localhost',  # Use 'localhost' if MySQL is running on the same machine
-        'PORT': '3306',  # Default MySQL port
+        'NAME': os.getenv('DB_NAME', 'fgs'),
+        'USER': os.getenv('DB_USER', 'root'),
+        'PASSWORD': os.getenv('DB_PASSWORD', ''),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '3306'),
     }
 }
 
@@ -114,14 +114,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 #For Custom USER
 AUTH_USER_MODEL = "student_management_app.CustomUser"
