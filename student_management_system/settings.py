@@ -68,11 +68,14 @@ WSGI_APPLICATION = 'student_management_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'fgs',  # Replace with your MySQL database name
+        'USER': 'root',  # Replace with your MySQL user
+        'PASSWORD': '',  # Replace with your MySQL password
+        'HOST': 'localhost',  # Use 'localhost' if MySQL is running on the same machine
+        'PORT': '3306',  # Default MySQL port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
